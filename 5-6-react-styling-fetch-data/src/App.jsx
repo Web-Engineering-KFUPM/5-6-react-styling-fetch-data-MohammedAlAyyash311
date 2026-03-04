@@ -204,6 +204,23 @@ export default function App() {
      ========================================================= */
   useEffect(() => {
     // TODO 2.1: Implement fetching users here (see lab instructions)
+    const fetchData =async() => {
+      try{
+         setLoading(true)
+         setError(null)
+         const response = await fetch("https://jsonplaceholder.typicode.com/users");
+      const jsonData = await response.json();
+      setData(jsonData);
+      setUsers(jsonData)
+      setFilteredUsers(jsonData)
+      }
+      catch (err) {
+         setError(err.message)
+      }
+      finally{
+         setLoading(false)
+      }
+    }
   }, []);
 
   /* =========================================================
@@ -215,6 +232,15 @@ export default function App() {
      ========================================================= */
   useEffect(() => {
     // TODO 2.2: Implement filtering users here (see lab instructions)
+    if (searchTerm.trim()==""){
+    setFilteredUsers(users)}
+    else{
+      const filtered = users.filter(user => (
+         user.name.toLowerCase().includes(searchTerm.toLowerCase())
+      ))
+      setFilteredUsers(filtered)
+    }
+
   }, [searchTerm, users]);
 
   // Modal handlers (already complete)
@@ -231,7 +257,7 @@ export default function App() {
   return (
     <div className="app">
       {/* TODO 1.1: Set header className EXACTLY as in lab instructions */}
-      <header className="">
+      <header className="bg-primary text-white py-3 mb-4 shadow">
         <Container>
           <h1 className="h2 mb-0">User Management Dashboard</h1>
           <p className="mb-0 opacity-75">Search users and view details</p>
@@ -254,7 +280,7 @@ export default function App() {
       </Container>
 
       {/* TODO 1.1: Set footer className EXACTLY as in lab instructions */}
-      <footer className="">
+      <footer className="bg-light py-4 mt-5">
         <Container>
           <small className="text-muted">SWE 363 — React Lab</small>
         </Container>
