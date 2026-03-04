@@ -18,7 +18,7 @@ function UserModal({ show, user, onHide }) {
 
    <Modal.Body>
       <div className="user-avatar-large">
-         { user.username.charAt(0) }
+         { user.name.charAt(0) }
       </div>
 
       <p><strong>Name:</strong> { user.name }</p>

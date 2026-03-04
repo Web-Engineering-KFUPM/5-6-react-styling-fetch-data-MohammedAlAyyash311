@@ -18,9 +18,7 @@ function UserCard({ user, onUserClick }) {
 
         {/* TODO 3.1: Add ONE <Button> here (text: "View Details") */}
         <Button onClick={()=>onUserClick(user)} >
-          <Button.Text>
-            <strong>View Details</strong>
-          </Button.Text>
+          <Button.Text>View Details</Button.Text>
         </Button>
         {/* TODO 3.1: onClick MUST call onUserClick and pass the current user object */}
       </Card.Body>
