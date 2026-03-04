@@ -9,6 +9,7 @@ function UserList({ users, onUserClick }) {
       <Alert variant="info">
       No users found matching your search criteria.
     </Alert>
+
     );
   }
 
